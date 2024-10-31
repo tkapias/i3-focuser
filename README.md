@@ -16,7 +16,7 @@ using x11 and i3wm's scratchpad.
 Otherwise it will run a systemd service or/and a command.
 
 Usage:
-  ./i3-focuser.bash [-h] [Options...] [-c 'pattern' [-n 'pattern']] [-m command [-s service]]
+  ./i3-focuser [-h] [Options...] [-c 'pattern' [-n 'pattern']] [-m command [-s service]]
 options:
   -h              Print this Help.
   -c "<WM_CLASS>" Regex pattern matching window general class.
@@ -58,18 +58,27 @@ ln -s $PWD/i3-focuser.bash $HOME/.local/bin/i3-focuser
 
 - Bindings in i3 config file:
 
-```
-# Start Kitty terminal as a service and toggle the window in focus or to the scratchpad.
+``` i3
+# Start Kitty terminal as a service and toggle the window in focus
+# or to the scratchpad.
 # Exemple of command for the systemd service:
-#   ExecStart=kitty --single-instance --instance-group quake --session ~/.config/kitty/session-quake.conf --name kitty --class Kitty-Quake --listen-on unix:@Kitty-Quake
+# ExecStart=kitty --single-instance --instance-group quake --session ~/.config/kitty/session-quake.conf --name kitty --class Kitty-Quake --listen-on unix:@Kitty-Quake
 bindcode $mod+49 exec --no-startup-id "i3-focuser -i -c '^Kitty-Quake$' -s kitty"
 
-# Start the File explorer PCManFM as a command and toggle the window in focus or to the scratchpad.
+# Start the File explorer PCManFM as a command and toggle the window
+# in focus or to the scratchpad.
 bindsym $mod+Tab exec --no-startup-id "i3-focuser -i -c \\"^Pcmanfm$\\" -m \\"pcmanfm $HOME\\""
 
-# Start KeepassXC passwords manager as a service and toggle the window from the notification area.
+# Start KeepassXC passwords manager as a service and toggle the window
+# from the notification area.
 bindsym $mod+x exec --no-startup-id "i3-focuser -c ^keepassxc$ -n Tomasz -s keepassxc.service"
 
-# Start the Qalculate calculator as a command and toggle the window in focus or to the scratchpad.
+# Start the Qalculate calculator as a command and toggle the window
+# in focus or to the scratchpad.
 bindsym $mod+Shift+c exec --no-startup-id "i3-focuser -i -c \\"qalculate-gtk\\" -n \\"^Qalculate!$\\" -m \\"qalculate-gtk\\""
 ```
+
+## Roadmap
+
+- Alternative to bonk: xdotool and wmctrl had too much instability, but bonk is not maintained anymore, so I may look for other ways.
+- Instance class filter: i3-focuser option -c match the general class of a window, but there is also an instance class that is rarely needed.
