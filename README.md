@@ -2,6 +2,8 @@
 
 A wrapper script that conditionally controls an application states under i3wm with a unique command line.
 
+![preview](assets/preview.gif)
+
 The [i3](https://github.com/i3/i3) tiling window manager lacks, by design, a taskbar.
 To some extent, the [Scratchpad](https://i3wm.org/docs/userguide.html#_scratchpad) feature fills the gap by letting you toggle floating windows between the current workspace and a hidden one.
 Also, i3 API allows to list windows in the Scratchpad or filter your actions by the window's class, instance or title, but there is no command to condition an action or a choice of actions on a state, so you can't start/quit/hide/focus a software with the same keybinding.
