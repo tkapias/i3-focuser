@@ -24,13 +24,13 @@ export LC_ALL="C.UTF-8"
 export TZ=:/etc/localtime
 
 Help() {
-	cat <<-'HEREDOC'
+	cat <<- HEREDOC
 		i3-focuser will try to focus, hide or close a floating window
 		using x11 and i3wm's scratchpad.
 		Otherwise it will run a systemd service or/and a command.
 
 		Usage:
-		  ./i3-focuser.bash [-h] [Options...] [-c 'pattern' [-n 'pattern']] [-m command [-s service]]
+		  ./$(basename "$0") [-h] [Options...] [-c 'pattern' [-n 'pattern']] [-m command [-s service]]
 		options:
 		  -h              Print this Help.
 		  -c "<WM_CLASS>" Regex pattern matching window general class.
